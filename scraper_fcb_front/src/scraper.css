@@ -1,0 +1,28 @@
+.card-container{
+    width: 500px;
+    height: 110px;
+    overflow: hidden;
+    box-shadow: 0px 0px 15px -5px;
+    margin-top: 100px;
+    margin-left: 430px;
+    margin-right: 300px;
+    background-color: #1C4F6F;
+   }
+
+   .but2{
+    margin-left:90px;
+    height: 30px;
+    width: 100px;
+    /* background-color: #89c9eb; */
+}
+.title1{
+    margin-left:150px;
+    margin-bottom: 20px;
+    color: white;
+}
+.name{
+    margin-left:50px;
+    height: 25px;
+    width: 200px;
+    background-color: #436d86;
+}
