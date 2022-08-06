@@ -7,8 +7,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from finder import check_page_exists
 from scraper import Scraper
 from utils import scroll_to_bottom
+import motor.motor_asyncio
+import os
 
 
+client = motor.motor_asyncio.AsyncIOMotorClient(os.environ["DB_URL"])
+db = client.DB_test
 
 app = FastAPI()
 
@@ -43,12 +47,8 @@ async def get_scraped_data(fastapi_req: Request):
         scroll_to_bottom(scrap.driver, 8)
         # time.sleep(200)
         scraped_data = scrap.scrape_data()
-        print(scraped_data)
-
-        # Serializing json
-        json_object = json.dumps(scraped_data, indent=4)
-        print(json_object)
-
+        for i in range(len(scraped_data)):
+            rec = await db[data["page_name"]].insert_one(scraped_data[i])
         return scraped_data
 
 if __name__ == "__main__":

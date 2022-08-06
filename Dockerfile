@@ -1,6 +1,6 @@
 FROM python:3.9-slim
 
-# Installing depedencies in ubuntu to install google chrome
+# Installing dependencies in ubuntu to install google chrome
 RUN apt-get update \
     && apt-get install -y \
         fonts-liberation \
@@ -39,6 +39,6 @@ RUN pip3 install -r requirements.txt
 RUN dpkg -i applications/google-chrome-stable_current_amd64.deb
 
 
-EXPOSE 8000
+EXPOSE 80
 
-ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]

@@ -1,5 +1,8 @@
-fastapi==0.79.0
-requests==2.27.1
+fastapi~=0.75.2
+requests~=2.26.0
 selenium==4.3.0
-uvicorn==0.17.6
+uvicorn~=0.18.2
 webdriver_manager==3.8.3
+
+motor~=3.0.0
+passlib~=1.7.4

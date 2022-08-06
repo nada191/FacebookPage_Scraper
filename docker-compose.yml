@@ -1,34 +1,19 @@
-version: '3'
+version: "3"
 
 services:
+  web:
+    build: ./
+    ports:
+      - "80:80"
+    environment:
+        - DB_URL=mongodb://db/DB_test
+
   db:
-    image: mongodb
-    ports:
-      - 27017:27017
-    volumes:
-      - ~/apps/mongo:/data/db
-    environment:
-        MONGODB_HOST: mongo
-        MONGODB_PORT: 27017
-        MONGODB_USER: root
-        MONGODB_PASSWORD: OTNmYTdjYmZkMjE5ZmYzODg0MDZiYWJh
-        PYTHONPATH: /app
+      image: mongo
+      ports:
+          - "27017:27017"
+      volumes:
+          - taskdb:/data/db
 
-
-  app:
-    build: .
-    expose:
-      - 8000
-    ports:
-      - 8000:8000
-    environment:
-        MONGODB_HOST: mongo
-        MONGODB_PORT: 27017
-        MONGODB_USER: root
-        MONGODB_PASSWORD: OTNmYTdjYmZkMjE5ZmYzODg0MDZiYWJh
-        PYTHONPATH: /app
-    depends_on:
-      - db
-    volumes:
-        - './:/app'
-    restart: always
+volumes:
+    taskdb:
