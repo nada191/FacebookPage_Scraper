@@ -1,5 +1,5 @@
 import re
-
+import datetime
 import requests
 from selenium.webdriver.common.by import By
 
@@ -28,7 +28,26 @@ def get_posted_time(post):
     """
 
     element = post.find_element(By.CSS_SELECTOR, "a.gpro0wi8.b1v8xokw")
-    return element.get_attribute('innerText')
+    posted_time = element.get_attribute('innerText')
+
+    # fixing posted_time to get the date foramt
+    l = []
+    l = posted_time.split()
+    if l[0].isdigit():
+
+        if l[1] == 'h':
+            posted_time = datetime.datetime.today() - datetime.timedelta(hours=int(l[0]))
+        elif l[1] == 'm':
+            posted_time = datetime.datetime.today() - datetime.timedelta(minutes=int(l[0]))
+        elif l[1] == 's':
+            posted_time = datetime.datetime.today() - datetime.timedelta(seconds=int(l[0]))
+        elif l[1] == 'j' or l[1] == 'd':
+            posted_time = datetime.datetime.today() - datetime.timedelta(days=int(l[0]))
+
+    elif l[0].lower() == 'hier' or l[0].lower() == 'yesterday':
+        posted_time = datetime.datetime.today() - datetime.timedelta(days=1)
+
+    return posted_time
 
 
 def get_text(post):

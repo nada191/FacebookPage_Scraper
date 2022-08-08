@@ -10,6 +10,7 @@ function App() {
 
       let data = {page_name: name}
       const url = 'http://127.0.0.1:8000/launch';
+//      const url = 'http://localhost:8000/';
       // console.log({name});
       await axios.post(url, data).then((response) => {
           console.log(response.data);

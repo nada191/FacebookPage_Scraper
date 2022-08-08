@@ -1,17 +1,25 @@
 version: "3"
 
 services:
-  web:
-    build: ./
+  api:
+    build:
+      context: ./
     ports:
-      - "80:80"
+      - 8000:8000
     environment:
         - DB_URL=mongodb://db/DB_test
+
+  web:
+    build:
+      context: ./
+      dockerfile: scraper_fcb_front/react.dockerfile
+    ports:
+      - 3000:3000
 
   db:
       image: mongo
       ports:
-          - "27017:27017"
+          - 27017:27017
       volumes:
           - taskdb:/data/db
 
