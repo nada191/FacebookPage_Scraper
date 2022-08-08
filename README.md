@@ -19,7 +19,7 @@ $ docker-compose up -d
 ```
 <p> To test the scraper, open the following link in your browser and simply enter the name of the page and launch the scraper: </p>
 
-* http://localhost:3000/
+* http://0.0.0.0:3000/
 
 <p> To see the scraped data, open: </p>
 
