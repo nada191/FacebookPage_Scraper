@@ -9,7 +9,7 @@
 <p> To start, in the terminal, you need to clone the project using the following command: </p>
 
 ```
-$ https://github.com/nada191/FacebookPage_Scraper
+$ git clone https://github.com/nada191/FacebookPage_Scraper
 ``` 
 
 <p> Then, create the 3 images and start the 3 containers ( one for the FastAPI application, one for the MongoDB database and one for the frontend "Reactjs" ) using this command: </p>
